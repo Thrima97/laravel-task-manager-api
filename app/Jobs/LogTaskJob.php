@@ -23,11 +23,6 @@ class LogTaskJob implements ShouldQueue
 
     public function handle(): void
     {
-        Log::channel('tasks')->info(sprintf(
-            '[%s] Task Created: %s - %s',
-            now()->toDateTimeString(),
-            $this->task->title,
-            $this->task->description ?? 'No description'
-        ));
+        Log::channel('tasks')->info("Task Created: {$this->task->title} - {$this->task->description}");
     }
 }

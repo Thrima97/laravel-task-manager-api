@@ -14,3 +14,7 @@ RUN apk --update add composer
 RUN docker-php-ext-install pdo_mysql
 RUN apk add --update npm
 RUN apk add --update make
+ARG UID=1000
+RUN usermod -u $UID www-data && groupmod -g $UID www-data
+COPY wait-for-it.sh /usr/local/bin/wait-for-it
+RUN chmod +x /usr/local/bin/wait-for-it
